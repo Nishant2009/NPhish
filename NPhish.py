@@ -684,7 +684,7 @@ def requirements(folder,mask):
         else:
             check_intr()
             line_print("\n"+info+"Downloading required files.....\n")
-            system("wget -q --show-progress https://github.com/Nishant2009/NPhish/Websites/{folder}.zip -O websites.zip")
+            system("wget -q --show-progress https://github.com/Nishant2009/NPhish/Websites/"+folder+".zip -O websites.zip")
             if not os.path.exists(root+"/.websites"):
                 system("cd $HOME && mkdir .websites")
             system("cd $HOME/.websites && mkdir "+folder)
