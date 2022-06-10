@@ -678,18 +678,19 @@ def customdir():
 # DOWNLOADING SITE FOLDER 
 def requirements(folder,mask):
     while True:
-        if os.path.exists(root+"/.websites/"+folder):
-            system("cp -r $HOME/.websites/"+folder+"/* $HOME/.site")
+        if os.path.exists(root+"/.website/"+folder):
+            system("cp -r $HOME/.website/"+folder+"/* $HOME/.site")
             break
         else:
             check_intr()
             line_print("\n"+info+"Downloading required files.....\n")
-            system("wget -q --show-progress https://github.com/Nishant2009/NPhish/Websites/"+folder+".zip -O websites.zip")
+            system("rm -rf website.zip")
+            system("wget -q --show-progress https://github.com/Nishant2009/NPhish/raw/main/Websites/"+folder+".zip -O website.zip")
             if not os.path.exists(root+"/.websites"):
                 system("cd $HOME && mkdir .websites")
             system("cd $HOME/.websites && mkdir "+folder)
-            system("unzip websites.zip -d $HOME/.websites/"+folder)
-            os.remove("websites.zip")
+            system("unzip website.zip -d $HOME/.websites/"+folder+" > /dev/null 2>&1")
+            os.remove("website.zip")
             system("cp -r $HOME/.websites/"+folder+"/* $HOME/.site")
             break
     with open(".info.txt", "w") as inform:
