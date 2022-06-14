@@ -17,17 +17,16 @@
  - For Termux
     - ```pkg install git python -y```
 
-##### Clone this repository
+##### Download The TOOL
 
- - ```wget https://raw.githubusercontent.com/Nishant2009/NPhish/main/NPhish.py```
+ - ```pip install NPhish```
 
 ##### Run the tool
- - ```python3 NPhish.py```
+ - ```NPhish```
 
 #### Directly run
 ```
-wget https://raw.githubusercontent.com/Nishant2009/NPhish/main/NPhish.py && python3 NPhish.py
-
+pip install NPhish && NPhish
 ```
 
 ### Features:
