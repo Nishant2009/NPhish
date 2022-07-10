@@ -17,22 +17,23 @@
  - For Termux
     - ```pkg install git python -y```
 
-##### Download The TOOL
+##### Install this tool
 
  - ```pip install NPhish```
 
 ##### Run the tool
  - ```NPhish```
 
-#### Directly run
+#### Or, directly run
 ```
 pip install NPhish && NPhish
+
 ```
 
 ### Features:
 
  - Multi platform (Supports most linux)
- - 65 Website templates
+ - 65 Website templates for 50+ sites.
  - Dual Tunneling (Ngrok and Cloudflared)
  - Easy to use
  - Possible error diagnoser
@@ -43,14 +44,14 @@ pip install NPhish && NPhish
 
 ### Requirements
 
+ - `Active Internet Connection`
  - `Python(3)`
  - `PHP`
  - `Curl`
  - `Unzip`
  - `Wget`
- - 60MB storage (INCLUDING TUNNELERS).
- - 2-3MB storage (IF TUNNELERS ALREADY DOWNLOADED).
- - If not found, all of the required packages will be installed on first run.
+ 
+If not found, all of the required packages will be installed on first run
 
 #### Tested on
 
@@ -59,15 +60,15 @@ pip install NPhish && NPhish
 
 ## Usage
 
-1. Run the script
+1. Run the Tool
 2. Choose a Website
 3. Wait sometimes for setting up all
 4. Send the generated link to victim
-5. Wait for victim login. As soon as he/she logs in, credentials will be captured
+5. Wait for victim login. As soon as he/she logs in, credentials will be captured.
 
 ## [+] Disclaimer
 ***This tool is developed for educational purposes. Here it demonstrates how phishing works. If anybody wants to gain unauthorized access to someones social media, he/she may try out this at his/her own risk. You have your own responsibilities and you are liable to any damage or violation of laws by this tool. The author is not responsible for any misuse of NPhish!***
 
-### This repository is open source to help others. So if you wish to copy, Give Credit!
+### This repository is open source to help others. So if you wish to copy, consider giving credit !!!
 
-####  If this tool helped you, consider Staring repository. Your stars encourage me a lot!
+####  If this tool helped you, consider staring repository. Your stars encourage me a lot !!!

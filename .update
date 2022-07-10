@@ -1,1 +1,1 @@
-pip install NPhish
+pip install NPhish --force-reinstall

